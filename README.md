@@ -3,7 +3,7 @@
 # Objective
 In this assignment, you will learn to access a high-performance computing environment, download genomic annotation data from ENSEMBL, and extract specific features (exon coordinates) using command-line tools.
 
-* Skills Practiced
+# Skills Practiced
 * HPC cluster access and resource allocation
 * Navigating Linux file systems
 * Downloading biological data from public repositories

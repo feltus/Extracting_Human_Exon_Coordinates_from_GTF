@@ -96,15 +96,6 @@ awk '$3 == "exon" {sum += $5-$4+1; count++} END {print "Average exon length: " s
 awk '$3 == "exon" {print $1, $4, $5, $5-$4+1}' Homo_sapiens.GRCh38.110.gtf | sort -k4,4nr | head -1 | awk '{print "Largest exon: " $1 ":" $2 "-" $3 " (" $4 " bp)"}'
 awk '$3 == "exon" {print $1, $4, $5, $5-$4+1}' Homo_sapiens.GRCh38.110.gtf | sort -k4,4n | head -1 | awk '{print "Smallest exon: " $1 ":" $2 "-" $3 " (" $4 " bp)"}'
 ```
-# Deliverables
-* A text file with the first 20 lines of your exon coordinates file
-* The total number of exons in the human genome (from your analysis)
-* A brief report (500-1000 words) answering the following questions:
-* What chromosome has the most exons and why might this be the case?
-* What is the average exon length in the human genome based on your analysis?
-* How could this information be used in designing genetic studies or diagnostics?
-* What challenges might arise when trying to map sequencing reads to exon coordinates?
-* Generative AI Prompts
 
 ## Prompt 1: Understanding Genome Assemblies
 ```

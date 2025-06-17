@@ -1,9 +1,11 @@
 # Extracting_Human_Exon_Coordinates_from_GTF
 
-# Objective
-In this assignment, you will learn to access a high-performance computing environment, download genomic annotation data from ENSEMBL, and extract specific features (exon coordinates) using command-line tools.
+# Computational Practice: Extracting Gene Coordinates From a Genome file.
 
-# Skills Practiced
+# Objective
+In this lab, you will access a high-performance computing environment, download genomic annotation data from ENSEMBL, and extract specific features (exon coordinates) using command-line tools. These are common computational biology tasks.
+
+# Learning Objectives
 * HPC cluster access and resource allocation
 * Navigating Linux file systems
 * Downloading biological data from public repositories
@@ -11,6 +13,7 @@ In this assignment, you will learn to access a high-performance computing enviro
 * Basic data extraction using command-line tools
 
 # Instructions
+
 ## Step 1: Access the Palmetto2 Cluster
 Open your web browser and navigate to https://ondemand.rcd.clemson.edu/
 Log in with your Clemson credentials
@@ -84,7 +87,6 @@ head human_exons_coordinates_tsv.txt
 ```
 
 ## Step 7: Enhanced Analysis (Optional Extensions)
-
 ```
 # Count exons per chromosome
 awk '$3 == "exon" {print $1}' Homo_sapiens.GRCh38.110.gtf | sort | uniq -c | sort -nr > exons_per_chromosome.txt
@@ -97,38 +99,37 @@ awk '$3 == "exon" {print $1, $4, $5, $5-$4+1}' Homo_sapiens.GRCh38.110.gtf | sor
 awk '$3 == "exon" {print $1, $4, $5, $5-$4+1}' Homo_sapiens.GRCh38.110.gtf | sort -k4,4n | head -1 | awk '{print "Smallest exon: " $1 ":" $2 "-" $3 " (" $4 " bp)"}'
 ```
 
-## Prompt 1: Understanding Genome Assemblies
-```
-"I'm working with human genome data and need a comprehensive understanding of genome assemblies. Could you explain:
+# Questions for Reflection
+* What is the biological significance of exons in gene structure, and why might extracting their coordinates be important for downstream genomic analyses like variant annotation or RNA-seq analysis?
+* How does the GTF (Gene Transfer Format) file structure enable efficient parsing of specific genomic features, and what advantages does the tab-delimited format provide over other annotation formats?
+* When you calculated the average exon length and identified the largest/smallest exons, what biological factors might explain the dramatic variation in exon sizes across the human genome?
+* Why is it crucial to work with the most current genome assembly (GRCh38.110) when extracting genomic coordinates, and what problems could arise from using outdated annotation versions in medical genomics applications?
 
-1. What a genome assembly is and how it's created
-2. The difference between reference genomes, draft genomes, and patch releases
-3. The evolution of human genome assemblies from GRCh37 (hg19) to GRCh38 (hg38) and the upcoming T2T-CHM13
-4. How contigs, scaffolds, and chromosomes relate to each other in an assembly
-5. Common file formats used to represent genome assemblies (FASTA, AGP, etc.)
-6. The concept of 'N' bases in assemblies and what they represent
-7. How genome assemblies handle complex regions like centromeres and telomeres
-8. Best practices for converting coordinates between different assembly versions
-9. How assembly quality is measured (e.g., N50, contig length)
-10. Real-world implications of assembly quality on downstream bioinformatic analyses"
-```
+# Generative AI Prompts For a Deeper Dive
 
-## Prompt 2: Representing DNA Information as Coordinates
+## Prompt 1: GTF File Structure and Genomic Annotation Standards
 ```
-"I'm working on a project involving exon coordinates extracted from a GTF file. Could you help me understand:
-
-1. The concept of genome coordinates and how they provide a reference system for genomic features
-2. Different coordinate systems (0-based vs 1-based, interbase) and their applications
-3. How genome coordinates relate to the central dogma of molecular biology (DNA → RNA → protein)
-4. The relationship between coordinates in GTF/GFF files and actual biological features like genes, exons, and introns
-5. How alternative splicing is represented using coordinate systems
-6. Challenges in coordinate representation across different reference genomes or assembly versions
-7. How genomic variants like SNPs, indels, and structural variants are described using coordinates
-8. File formats specialized for storing genomic coordinates (BED, GTF, GFF, VCF)
-9. Coordinate transformation in genome browsers and visualization tools
-10. Computational methods for efficiently querying and manipulating genomic intervals"
+I'm working with GTF files for genomic annotation analysis and need to understand the format more deeply. Could you explain:
+1. The complete structure of GTF files - all 9 columns and their biological significance
+2. How GTF differs from other annotation formats like GFF3, BED, and GenBank
+3. The hierarchical relationship between genes, transcripts, exons, and CDSs in GTF files
+4. How to extract complex features like alternative splicing patterns and isoform-specific exons
+5. Best practices for validating GTF file integrity and handling edge cases in parsing
+6. How modern genome browsers and analysis tools utilize GTF annotations
+Please include examples of parsing commands for extracting different feature types and explain how coordinate systems work in genomic annotations.
 ```
-
+## Prompt 2: Exon Biology and Computational Analysis Applications
+```
+I've extracted exon coordinates from the human genome and want to understand their broader biological and computational significance. Could you provide insights on:
+1. The biological role of exons in gene expression and protein coding
+2. How exon size distribution relates to gene function and evolutionary constraints
+3. Computational applications that rely on accurate exon coordinates (variant calling, RNA-seq, splice site prediction)
+4. Methods for analyzing exon conservation across species and identifying functionally important regions
+5. How alternative splicing affects exon usage and how to computationally detect splice variants
+6. Integration of exon coordinates with other genomic datasets (ChIP-seq, ATAC-seq, Hi-C)
+7. Clinical applications where exon coordinate accuracy is critical (precision medicine, genetic diagnostics)
+Please explain how exon coordinate data connects to real-world medical genomics workflows and research applications.
+```
 # Additional Resources
 ENSEMBL Documentation (https://useast.ensembl.org/info/website/upload/gff.html)
 GTF Format Specification (https://genome.ucsc.edu/FAQ/FAQformat.html#format4)

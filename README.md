@@ -131,6 +131,6 @@ I've extracted exon coordinates from the human genome and want to understand the
 Please explain how exon coordinate data connects to real-world medical genomics workflows and research applications.
 ```
 # Additional Resources
-ENSEMBL Documentation (https://useast.ensembl.org/info/website/upload/gff.html)
-GTF Format Specification (https://genome.ucsc.edu/FAQ/FAQformat.html#format4)
-Palmetto2 User Guide (https://docs.rcd.clemson.edu/palmetto/index.html)
+* ENSEMBL Documentation (https://useast.ensembl.org/info/website/upload/gff.html)
+* GTF Format Specification (https://genome.ucsc.edu/FAQ/FAQformat.html#format4)
+* Palmetto2 User Guide (https://docs.rcd.clemson.edu/palmetto/index.html)

@@ -57,7 +57,7 @@ pwd
 ## Step 5: Download the Human GTF File from ENSEMBL
 ```
 # Download the latest GTF file for human genome 
-wget https://ftp.ensembl.org/pub/current_gtf/homo_sapiens/Homo_sapiens.GRCh38.110.gtf.gz
+wget https://ftp.ensembl.org/pub/release-114/gtf/homo_sapiens/Homo_sapiens.GRCh38.114.gtf.gz
 
 # Check the file size to confirm successful download
 ls -lh
@@ -66,11 +66,11 @@ ls -lh
 ## Step 6: Extract Exon Coordinates
 ```
 # Uncompress the GTF file
-gunzip Homo_sapiens.GRCh38.110.gtf.gz
+gunzip Homo_sapiens.GRCh38.114.gtf.gz
 
 # Extract chromosome, start, and stop coordinates for all exons
 # Format: chromosome, start, end
-awk '$3 == "exon" {print $1, $4, $5}' Homo_sapiens.GRCh38.110.gtf > human_exons_coordinates.txt
+awk '$3 == "exon" {print $1, $4, $5}' Homo_sapiens.GRCh38.114.gtf > human_exons_coordinates.txt
 
 # Look at the first few lines of the extracted coordinates
 head human_exons_coordinates.txt
@@ -80,7 +80,7 @@ wc -l human_exons_coordinates.txt
 
 # Create a more structured output with tab-separated values and a header
 echo -e "chromosome\tstart\tend" > human_exons_coordinates_tsv.txt
-awk '$3 == "exon" {print $1"\t"$4"\t"$5}' Homo_sapiens.GRCh38.110.gtf >> human_exons_coordinates_tsv.txt
+awk '$3 == "exon" {print $1"\t"$4"\t"$5}' Homo_sapiens.GRCh38.114.gtf >> human_exons_coordinates_tsv.txt
 
 # View the formatted output
 head human_exons_coordinates_tsv.txt
@@ -89,14 +89,14 @@ head human_exons_coordinates_tsv.txt
 ## Step 7: Enhanced Analysis (Optional Extensions)
 ```
 # Count exons per chromosome
-awk '$3 == "exon" {print $1}' Homo_sapiens.GRCh38.110.gtf | sort | uniq -c | sort -nr > exons_per_chromosome.txt
+awk '$3 == "exon" {print $1}' Homo_sapiens.GRCh38.114.gtf | sort | uniq -c | sort -nr > exons_per_chromosome.txt
 
 # Calculate average exon length
-awk '$3 == "exon" {sum += $5-$4+1; count++} END {print "Average exon length: " sum/count " bp"}' Homo_sapiens.GRCh38.110.gtf
+awk '$3 == "exon" {sum += $5-$4+1; count++} END {print "Average exon length: " sum/count " bp"}' Homo_sapiens.GRCh38.114.gtf
 
 # Find the largest and smallest exons
-awk '$3 == "exon" {print $1, $4, $5, $5-$4+1}' Homo_sapiens.GRCh38.110.gtf | sort -k4,4nr | head -1 | awk '{print "Largest exon: " $1 ":" $2 "-" $3 " (" $4 " bp)"}'
-awk '$3 == "exon" {print $1, $4, $5, $5-$4+1}' Homo_sapiens.GRCh38.110.gtf | sort -k4,4n | head -1 | awk '{print "Smallest exon: " $1 ":" $2 "-" $3 " (" $4 " bp)"}'
+awk '$3 == "exon" {print $1, $4, $5, $5-$4+1}' Homo_sapiens.GRCh38.114.gtf | sort -k4,4nr | head -1 | awk '{print "Largest exon: " $1 ":" $2 "-" $3 " (" $4 " bp)"}'
+awk '$3 == "exon" {print $1, $4, $5, $5-$4+1}' Homo_sapiens.GRCh38.114.gtf | sort -k4,4n | head -1 | awk '{print "Smallest exon: " $1 ":" $2 "-" $3 " (" $4 " bp)"}'
 ```
 
 # Questions for Reflection
